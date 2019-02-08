@@ -48,6 +48,7 @@ class TreesTool
       }
 
       //encrypt the key
+      //TODO: only encrypt the secret key of keypair???
       $encryptedKey = sodium_crypto_secretbox($key, hex2bin($skNonce), $symmetricKey);
 
       //save the key
@@ -78,8 +79,8 @@ class TreesTool
     private function newKey()
     {
       $kp = sodium_crypto_box_keypair();
-      $pk = sodium_crypto_box_secretkey($kp);
-      return $pk;
+      //$pk = sodium_crypto_box_secretkey($kp);
+      return $kp;
     }
 
     # ref: https://paragonie.com/book/pecl-libsodium/read/07-password-hashing.md
