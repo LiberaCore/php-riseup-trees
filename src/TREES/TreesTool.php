@@ -13,6 +13,7 @@ class TreesTool
     public $DIGEST_BYTES      = 32; //key bytes length for secret box crypto
 
     //private attributes
+    //TODO: only have a StorageKey as private attribute, when using change password and clean afterwards
     public $publicKey         = "";
     public $lockedSecretBox   = "";
     public $skNonce           = "";
@@ -68,14 +69,6 @@ class TreesTool
 
       return $storageKey;
 
-      //TODO: delete
-      /*
-      //save the key
-      $this->publicKey = sodium_bin2hex(sodium_crypto_box_publickey($key));
-      $this->lockedSecretbox = sodium_bin2hex($encryptedKey);
-      print("PublicKey: " . $this->publicKey . "\n");
-      print("LockedSecretBox: " . sodium_bin2hex($encryptedKey) . "\n");
-      */
     }
 
     private function decryptKey($password)
