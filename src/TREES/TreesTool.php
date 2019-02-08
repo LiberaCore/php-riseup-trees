@@ -73,7 +73,7 @@ class TreesTool
 
     private function decryptKey($password, $storageKey)
     {
-      $passwordBytes = passwordKDF($password, $storageKey->salt);
+      $passwordBytes = $this->passwordKDF($password, $storageKey->salt);
       $secretKey = sodium_crypto_secretbox_open($storageKey->lockedSecretBox, $storageKey->skNonce, $passwordBytes);
       if ($secretKey === false) {
           throw new Exception("Bad ciphertext");
