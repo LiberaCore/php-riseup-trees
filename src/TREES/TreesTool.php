@@ -42,7 +42,7 @@ class TreesTool
       //create salt if null
       if (is_null($salt))
       {
-        $salt = random_bytes(SODIUM_CRYPTO_PWHASH_SALTBYTES);
+        $salt = sodium_bin2hex(random_bytes(SODIUM_CRYPTO_PWHASH_SALTBYTES));
       }
 
       $symmetricKey = $this->passwordKDF($password, $salt);
