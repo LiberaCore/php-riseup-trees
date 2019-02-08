@@ -53,6 +53,7 @@ class TreesTool
       //save the key
       $this->publicKey = bin2hex(sodium_crypto_box_publickey($key));
       $this->lockedSecretbox = bin2hex($encryptedKey);
+      print("EncryptedKey: " . $encryptedKey . "\n");
       print("PublicKey: " . $this->publicKey . "\n");
       print("LockedSecretBox: " . $this->lockedSecretBox . "\n");
     }
