@@ -44,15 +44,15 @@ class TreesTool
       //check if nonce is set
       if(is_null($skNonce))
       {
-        $skNonce = bin2hex(random_bytes($this->NONCE_BYTES));
+        $skNonce = sodium_bin2hex(random_bytes($this->NONCE_BYTES));
       }
 
       //encrypt the secret key of the keypair
-      $encryptedKey = sodium_crypto_secretbox(sodium_crypto_box_secretkey($key), hex2bin($skNonce), $symmetricKey);
+      $encryptedKey = sodium_crypto_secretbox(sodium_crypto_box_secretkey($key), sodium_hex2bin($skNonce), $symmetricKey);
 
       //save the key
-      $this->publicKey = bin2hex(sodium_crypto_box_publickey($key));
-      $this->lockedSecretbox = bin2hex($encryptedKey);
+      $this->publicKey = sodium_bin2hex(sodium_crypto_box_publickey($key));
+      $this->lockedSecretbox = sodium_bin2hex($encryptedKey);
       print("EncryptedKey: " . $encryptedKey . "\n");
       print("PublicKey: " . $this->publicKey . "\n");
       print("LockedSecretBox: " . $this->lockedSecretBox . "\n");
@@ -95,7 +95,7 @@ class TreesTool
         $salt = random_bytes(SODIUM_CRYPTO_PWHASH_SALTBYTES);
       }
       else {
-        $salt = hex2bin($salt);
+        $salt = sodium_hex2bin($salt);
       }
 
       $seed = sodium_crypto_pwhash(
