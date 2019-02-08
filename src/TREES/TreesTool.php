@@ -30,9 +30,9 @@ class TreesTool
     }
 
 
-    public function changePassword($oldPassword, $newPassword)
+    public function changePassword($oldPassword, $newPassword, $storageKey)
     {
-      $key = $this->decryptKey($oldPassword);
+      $key = $this->decryptKey($oldPassword, $storageKey);
       return $this->encryptKey($key, $newPassword);
     }
 
@@ -71,10 +71,10 @@ class TreesTool
 
     }
 
-    private function decryptKey($password)
+    private function decryptKey($password, $storageKey)
     {
-      $passwordBytes = passwordKDF($password);
-      $secretKey = sodium_crypto_secretbox_open($this->lockedSecretBox, $this->skNonce, $passwordBytes);
+      $passwordBytes = passwordKDF($password, $storageKey->salt);
+      $secretKey = sodium_crypto_secretbox_open($storageKey->lockedSecretBox, $storageKey->skNonce, $passwordBytes);
       if ($secretKey === false) {
           throw new Exception("Bad ciphertext");
       }
@@ -82,7 +82,7 @@ class TreesTool
 
       $keypair = sodium_crypto_box_keypair_from_secretkey_and_publickey(
           $secretKey,
-          $this->publickey
+          $storageKey->publickey
       );
       return $keypair;
     }
