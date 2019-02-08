@@ -82,7 +82,7 @@ class TreesTool
 
       $keypair = sodium_crypto_box_keypair_from_secretkey_and_publickey(
           $secretKey,
-          sodium_hex2bin($storageKey->publickey)
+          sodium_hex2bin($storageKey->publicKey)
       );
       return $keypair;
     }
