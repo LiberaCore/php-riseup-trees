@@ -55,7 +55,7 @@ class TreesTool
       $this->lockedSecretbox = sodium_bin2hex($encryptedKey);
       print("EncryptedKey: " . $encryptedKey . "\n");
       print("PublicKey: " . $this->publicKey . "\n");
-      print("LockedSecretBox: " . $this->lockedSecretBox . "\n");
+      print("LockedSecretBox: " . sodium_bin2hex($encryptedKey) . "\n");
     }
 
     private function decryptKey($password)
