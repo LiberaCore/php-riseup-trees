@@ -44,7 +44,7 @@ class TreesTool
       //check if nonce is set
       if(is_null($skNonce))
       {
-        $skNonce = random_bytes($this->NONCE_BYTES);
+        $skNonce = bin2hex(random_bytes($this->NONCE_BYTES));
       }
 
       //encrypt the key
