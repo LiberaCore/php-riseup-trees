@@ -16,8 +16,18 @@ var_dump(get_object_vars($st));
 
 //TODO: change Password
 print("Test: changePassword \n");
-$trees->changePassword("12345678", "87654321", $st);
-var_dump(get_object_vars($st));
+$stNew = $trees->changePassword("12345678", "87654321", $st);
+var_dump(get_object_vars($stNew));
+
+if(
+    ($st->publicKey != $stNew->publicKey) ||
+    ($st->salt == $stNew->salt) ||
+    ($st->lockedSecretBox == $stNew->lockedSecretBox) ||
+    ($st->skNonce == $stNew->skNonce)
+)
+{
+  print("Failed: StorageKey has not changed as it should!\n");
+}
 
 //TODO: try to encrypt
 //TODO: try to decrypt
