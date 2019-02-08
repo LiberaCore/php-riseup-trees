@@ -39,6 +39,12 @@ class TreesTool
     # //TODO: is sodium_crypto_secretbox able to encrypt bytes, or only string
     private function encryptKey($key, $password=NULL, $salt=NULL, $skNonce=NULL)
     {
+      //create salt if null
+      if (is_null($salt))
+      {
+        $salt = random_bytes(SODIUM_CRYPTO_PWHASH_SALTBYTES);
+      }
+
       $symmetricKey = $this->passwordKDF($password, $salt);
 
       //check if nonce is set
