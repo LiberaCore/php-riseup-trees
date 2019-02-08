@@ -13,9 +13,9 @@ class TreesTool
     public $DIGEST_BYTES      = 32; //key bytes length for secret box crypto
 
     //private attributes
-    public $publicKey         = NULL;
-    public $lockedSecretBox   = NULL;
-    public $skNonce           = NULL;
+    public $publicKey         = "";
+    public $lockedSecretBox   = "";
+    public $skNonce           = "";
 
 
     function __construct() {
@@ -50,12 +50,26 @@ class TreesTool
       //encrypt the secret key of the keypair
       $encryptedKey = sodium_crypto_secretbox(sodium_crypto_box_secretkey($key), sodium_hex2bin($skNonce), $symmetricKey);
 
+      //create TreesStorageKey object
+      $storageKey = new TreesStorageKey();
+      $storageKey->OPS_LIMIT = $this->OPS_LIMIT;
+      $storageKey->MEM_LIMIT = $this->MEM_LIMIT;
+      $storageKey->publicKey = sodium_bin2hex(sodium_crypto_box_publickey($key));
+      $storageKey->lockedSecretBox = sodium_bin2hex($encryptedKey);
+      $storageKey->salt = $salt;
+      $storageKey->skNonce = $skNonce;
+      $storageKey->pwhashAlgo = 1;
+
+      return $storageKey;
+
+      //TODO: delete
+      /*
       //save the key
       $this->publicKey = sodium_bin2hex(sodium_crypto_box_publickey($key));
       $this->lockedSecretbox = sodium_bin2hex($encryptedKey);
-      print("EncryptedKey: " . $encryptedKey . "\n");
       print("PublicKey: " . $this->publicKey . "\n");
       print("LockedSecretBox: " . sodium_bin2hex($encryptedKey) . "\n");
+      */
     }
 
     private function decryptKey($password)

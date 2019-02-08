@@ -2,6 +2,8 @@
 require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Composer autoload
 //require_once __DIR__ .
 use TREES\TreesTool;
+use TREES\TreesStorageKey;
 
 $trees = new TreesTool();
-$trees->generateNewKeypair("12345678");
+$st = $trees->generateNewKeypair("12345678");
+var_dump(get_object_vars($st));
