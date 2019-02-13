@@ -27,6 +27,7 @@ if(
 )
 {
   print("Failed: StorageKey has not changed as it should!\n");
+  return 1;
 }
 
 //TODO: try to encrypt

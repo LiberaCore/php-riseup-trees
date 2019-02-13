@@ -1,6 +1,24 @@
 <?php
 namespace TREES;
 
+/**
+* TreesTool is a sample class for demonstrating PHPDoc
+*
+* Example_Class is a class that has no real actual code, but merely
+* exists to help provide people with an understanding as to how the
+* various PHPDoc tags are used.
+*
+* Example usage:
+* if (Example_Class::example()) {
+*    print "I am an example.";
+* }
+*
+* @package  riseup-trees-php
+* @author   nebulak <nebulak@riot.sh>
+* @version  $Revision: 0.1 $
+* @access   public
+* @see      http://TODO:
+*/
 class TreesTool
 {
     public $OPS_LIMIT         = SODIUM_CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE;

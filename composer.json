@@ -1,4 +1,18 @@
 {
+    "name": "riot.sh/php-riseup-trees",
+    "type": "library",
+    "description": "Package to create and update keys for Rise Up's TREES",
+    "keywords": ["riseup","trees","libsodium","encryption"],
+    "homepage": "https://riot.sh",
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Mischa Buchhofer",
+            "email": "nebulak@riot.sh",
+            "homepage": "https://riot.sh",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
         "psr-0": {
             "TREES": "src/"
