@@ -4,7 +4,7 @@
     "description": "Package to create and update keys for Rise Up's TREES",
     "keywords": ["riseup","trees","libsodium","encryption"],
     "homepage": "https://riot.sh",
-    "license": "GPLv3",
+    "license": "AGPL-3.0",
     "authors": [
         {
             "name": "Mischa Buchhofer",
