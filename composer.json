@@ -5,7 +5,7 @@
     "keywords": ["riseup","trees","libsodium","encryption"],
     "homepage": "https://liberacore.org",
     "license": "AGPL-3.0",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "authors": [
         {
             "name": "Mischa Buchhofer",
